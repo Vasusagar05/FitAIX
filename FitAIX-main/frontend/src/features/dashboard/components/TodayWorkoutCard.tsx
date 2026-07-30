@@ -22,7 +22,7 @@ export const TodayWorkoutCard: React.FC = () => {
           </Badge>
         </div>
 
-        <h2 className="text-2xl font-black text-white tracking-tight mb-1">Hypertrophy Push & Core A</h2>
+        <h2 className="text-2xl font-black text-white tracking-tight mb-1">Today' Workout</h2>
         <p className="text-xs text-slate-300 mb-4 line-clamp-2">
           AI Adapted: Volume calibrated -5% to protect rotator cuff tendons while maximizing upper chest hypertrophy.
         </p>

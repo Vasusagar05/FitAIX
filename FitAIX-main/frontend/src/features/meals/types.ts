@@ -8,4 +8,7 @@ export interface Meal {
   fatGrams: number;
   prepTimeMins: number;
   budgetTier: '$' | '$$' | '$$$';
+  ingredients?: string[];
+  date?: string;
+  userId?: number;
 }

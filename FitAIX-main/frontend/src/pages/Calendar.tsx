@@ -28,14 +28,14 @@ export default function CalendarPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-gradient-to-r from-obsidian-900 via-obsidian-800 to-obsidian-900 border border-obsidian-700/80 shadow-glass flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-obsidian-900 via-obsidian-800 to-obsidian-900 border border-obsidian-700/80 shadow-glass flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight flex items-center gap-2">
-            <Calendar className="w-6 h-6 text-neon-cyan" />
+          <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2">
+            <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-neon-cyan" />
             Smart Weekly Planner & Heatmap
           </h1>
-          <p className="text-xs text-slate-400 font-mono mt-1">
+          <p className="text-[11px] sm:text-xs text-slate-400 font-mono mt-1">
             Real-time muscle strain heatmap tracking and overuse risk detection.
           </p>
         </div>

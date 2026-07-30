@@ -5,7 +5,6 @@ export interface DashboardData {
     avatarUrl: string;
     goal: string;
     scenarioMode: string;
-    viewMode: string;
   };
   recoveryScore: {
     overall: number;
@@ -27,4 +26,6 @@ export interface DashboardData {
     targetMl: number;
     consumedMl: number;
   };
+  steps: number;
+  distanceKm: number;
 }

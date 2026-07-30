@@ -19,12 +19,12 @@ export const WeeklyGrid: React.FC<WeeklyGridProps> = ({ schedule }) => {
 
   return (
     <GlassCard glow="cyan" className="space-y-4">
-      <div className="flex items-center justify-between border-b border-obsidian-700/60 pb-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-obsidian-700/60 pb-3 gap-2">
         <div className="flex items-center gap-2">
           <CalendarIcon className="w-5 h-5 text-neon-cyan" />
-          <h3 className="text-lg font-bold text-white">Smart Weekly Planner & Heatmap</h3>
+          <h3 className="text-base sm:text-lg font-bold text-white">Smart Weekly Planner & Heatmap</h3>
         </div>
-        <div className="flex items-center gap-3 text-xs font-mono">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[10px] sm:text-xs font-mono">
           <span className="flex items-center gap-1 text-neon-emerald">● Low Stress</span>
           <span className="flex items-center gap-1 text-neon-amber">● Optimal</span>
           <span className="flex items-center gap-1 text-neon-rose">● Overuse Alert</span>
@@ -35,7 +35,7 @@ export const WeeklyGrid: React.FC<WeeklyGridProps> = ({ schedule }) => {
         {schedule.map((item, idx) => (
           <div
             key={idx}
-            className={`p-3.5 rounded-2xl border flex flex-col justify-between h-44 transition-all hover:-translate-y-1 ${
+            className={`p-3.5 rounded-2xl border flex flex-col justify-between h-auto min-h-[120px] md:h-44 transition-all hover:-translate-y-1 ${
               stressStyles[item.stressLevel]
             }`}
           >

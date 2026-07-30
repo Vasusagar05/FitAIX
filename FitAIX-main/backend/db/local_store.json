@@ -1,0 +1,1580 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "reddyjayanth1000",
+      "email": "reddyjayanth100@gmail.com",
+      "password_hash": "72b315015682567aaab2f64cb66bb3085e2f8085f54ab34917084c0e7a528aa3",
+      "created_at": "2026-07-29T13:38:56.080Z"
+    },
+    {
+      "id": 2,
+      "username": "nalla.btech202386",
+      "email": "nalla.btech2023@spsu.ac.in",
+      "password_hash": "f8685777ab05873bf14c5a4edf50948ad2b43482c4396bcbe7f86ce9f008893a",
+      "created_at": "2026-07-29T13:39:25.341Z"
+    },
+    {
+      "id": 3,
+      "username": "jay36081777",
+      "email": "jay360817@gmail.com",
+      "password_hash": "ee85ddd43dcb490c0aecc3e3fef08a4d225e5aa730522c08f0e15913a4fc154d",
+      "created_at": "2026-07-29T14:23:01.524Z"
+    },
+    {
+      "id": 4,
+      "username": "nr23887914",
+      "email": "nr238879@gmail.com",
+      "password_hash": "78e2112488195fdf3faeccfefd3e3952db96c4cc109470bbb8720e289179b759",
+      "created_at": "2026-07-30T01:57:25.469Z"
+    }
+  ],
+  "user_profiles": [
+    {
+      "user_id": 1,
+      "full_name": "reddyjayanth1000",
+      "age": 25,
+      "gender": "Not Specified",
+      "height": 175,
+      "weight": 70,
+      "fitness_goal": "Maintenance",
+      "experience_level": "Intermediate",
+      "workout_duration": 45,
+      "equipment": "Gym"
+    },
+    {
+      "user_id": 2,
+      "full_name": "nalla.btech202386",
+      "age": 25,
+      "gender": "Not Specified",
+      "height": 175,
+      "weight": 70,
+      "fitness_goal": "Maintenance",
+      "experience_level": "Intermediate",
+      "workout_duration": 45,
+      "equipment": "Gym"
+    },
+    {
+      "user_id": 3,
+      "full_name": "jay36081777",
+      "age": 25,
+      "gender": "Not Specified",
+      "height": 175,
+      "weight": 70,
+      "fitness_goal": "Maintenance",
+      "experience_level": "Intermediate",
+      "workout_duration": 45,
+      "equipment": "Gym"
+    },
+    {
+      "user_id": 4,
+      "full_name": "nr23887914",
+      "age": 25,
+      "gender": "Not Specified",
+      "height": 175,
+      "weight": 70,
+      "fitness_goal": "Maintenance",
+      "experience_level": "Intermediate",
+      "workout_duration": 45,
+      "equipment": "Gym"
+    }
+  ],
+  "weight_history": [],
+  "workout_plans": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "title": "Intermediate Back Protocol",
+      "warmup": "5-10 minutes of light cardio on the treadmill or stationary bike, followed by dynamic stretching of the back and shoulder muscles, including 3 sets of 10-15 repetitions of arm circles, shoulder rolls, and torso twists, and 3 sets of 10-15 repetitions of leg swings and hip circles to prepare the entire body for the intermediate back protocol",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5-10 minutes of static stretching of the back and shoulder muscles, including 3 sets of 20-30 seconds of lat stretches, rhomboid stretches, and trapezius stretches, and 3 sets of 20-30 seconds of hamstring and hip flexor stretches to aid in the recovery and relaxation of the muscles after the 45-minute intermediate back protocol",
+      "created_at": "2026-07-29T13:40:41.466Z"
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "title": "dgeh",
+      "warmup": "5-10 minutes dynamic stretching",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5 minutes static stretching",
+      "created_at": "2026-07-29T13:44:01.895Z"
+    },
+    {
+      "id": 3,
+      "user_id": 1,
+      "title": "estrfj",
+      "warmup": "5-10 minutes dynamic stretching",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5 minutes static stretching",
+      "created_at": "2026-07-29T13:44:22.350Z"
+    },
+    {
+      "id": 4,
+      "user_id": 1,
+      "title": "Intermediate Arms Protocol",
+      "warmup": "5-10 minutes of cardio such as jogging on the treadmill or jumping jacks, followed by dynamic stretching of the arms, including arm circles and wrist extensions",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5-10 minutes of static stretching, focusing on the biceps, triceps, and shoulders",
+      "created_at": "2026-07-29T13:45:30.568Z"
+    },
+    {
+      "id": 5,
+      "user_id": 1,
+      "title": "Intermediate Arms + Shoulders Protocol",
+      "warmup": "5-10 minutes of light cardio such as jogging on the treadmill or jumping jacks, followed by dynamic stretching for the arms and shoulders, including arm circles and shoulder rolls",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5-10 minutes of static stretching for the arms and shoulders, focusing on the biceps, triceps, and deltoids",
+      "created_at": "2026-07-29T13:45:35.596Z"
+    },
+    {
+      "id": 6,
+      "user_id": 1,
+      "title": "n",
+      "warmup": "5-10 minutes dynamic stretching",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5 minutes static stretching",
+      "created_at": "2026-07-29T13:45:42.569Z"
+    },
+    {
+      "id": 7,
+      "user_id": 1,
+      "title": "sd",
+      "warmup": "5-10 minutes dynamic stretching",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5 minutes static stretching",
+      "created_at": "2026-07-29T13:51:42.312Z"
+    },
+    {
+      "id": 8,
+      "user_id": 1,
+      "title": "Intermediate Legs Protocol",
+      "warmup": "5-10 minutes of light cardio such as jogging on the treadmill or cycling, followed by dynamic stretching focusing on leg swings, lunges, and calf raises",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5-10 minutes of static stretching focusing on hamstrings, quadriceps, glutes, and calves",
+      "created_at": "2026-07-29T13:53:45.440Z"
+    },
+    {
+      "id": 9,
+      "user_id": 1,
+      "title": "Intermediate Legs Protocol",
+      "warmup": "5-10 minutes on the treadmill or stationary bike, followed by dynamic leg swings and lunges to prepare the muscles for exercise",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5-10 minutes of static stretches for the legs, focusing on the quadriceps, hamstrings, glutes, and calves",
+      "created_at": "2026-07-29T13:59:36.590Z"
+    },
+    {
+      "id": 10,
+      "user_id": 1,
+      "title": "dxf",
+      "warmup": "5-10 minutes dynamic stretching",
+      "difficulty": "Intermediate",
+      "duration_mins": 30,
+      "calories_estimated": 240,
+      "cooldown": "5 minutes static stretching",
+      "created_at": "2026-07-29T14:05:07.230Z"
+    },
+    {
+      "id": 11,
+      "user_id": 1,
+      "title": "Intermediate Back Protocol",
+      "warmup": "5-10 minutes on the treadmill or stationary bike, followed by dynamic stretching for the back, including arm circles and torso twists",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5-10 minutes of static stretching for the back, focusing on the latissimus dorsi, trapezius, and rhomboid muscles",
+      "created_at": "2026-07-29T14:05:21.607Z"
+    },
+    {
+      "id": 12,
+      "user_id": 1,
+      "title": "Intermediate Back Protocol",
+      "warmup": "5-10 minutes of cardio such as jogging on the treadmill or rowing machine, followed by dynamic stretching focusing on the back muscles",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5-10 minutes of static stretching focusing on the back muscles, including lat stretches and upper back stretches",
+      "created_at": "2026-07-29T14:05:30.064Z"
+    },
+    {
+      "id": 13,
+      "user_id": 1,
+      "title": "Intermediate Back Protocol",
+      "warmup": "5-10 minutes on the treadmill or stationary bike to get the blood flowing and warm up the muscles, followed by dynamic stretching focusing on the back, such as arm circles and torso twists",
+      "difficulty": "Intermediate",
+      "duration_mins": 90,
+      "calories_estimated": 720,
+      "cooldown": "5-10 minutes of static stretching focusing on the back, including stretches for the latissimus dorsi, trapezius, and rhomboids",
+      "created_at": "2026-07-29T14:05:39.161Z"
+    },
+    {
+      "id": 14,
+      "user_id": 1,
+      "title": "Intermediate Back Protocol",
+      "warmup": "5-10 minutes of light cardio such as jogging in place or jumping jacks, followed by dynamic stretching like arm circles, leg swings, and torso twists",
+      "difficulty": "Intermediate",
+      "duration_mins": 90,
+      "calories_estimated": 720,
+      "cooldown": "5-10 minutes of static stretching focusing on the back muscles, including lat stretches, upper back stretches, and lower back stretches",
+      "created_at": "2026-07-29T14:05:47.771Z"
+    },
+    {
+      "id": 15,
+      "user_id": 1,
+      "title": "dshdgmhjbn",
+      "warmup": "5-10 minutes dynamic stretching",
+      "difficulty": "Intermediate",
+      "duration_mins": 30,
+      "calories_estimated": 240,
+      "cooldown": "5 minutes static stretching",
+      "created_at": "2026-07-29T14:06:37.305Z"
+    },
+    {
+      "id": 16,
+      "user_id": 1,
+      "title": "rhd",
+      "warmup": "5-10 minutes dynamic stretching",
+      "difficulty": "Intermediate",
+      "duration_mins": 60,
+      "calories_estimated": 480,
+      "cooldown": "5 minutes static stretching",
+      "created_at": "2026-07-29T14:13:23.618Z"
+    },
+    {
+      "id": 17,
+      "user_id": 1,
+      "title": "Intermediate Back Protocol",
+      "warmup": "5-10 minutes on the treadmill or stationary bike, followed by dynamic stretching for the back, including arm circles, torso twists, and leg swings",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5-10 minutes of static stretching for the back, including lat stretches, row stretches, and chest stretches",
+      "created_at": "2026-07-29T14:30:24.220Z"
+    },
+    {
+      "id": 18,
+      "user_id": 1,
+      "title": "edf",
+      "warmup": "5-10 minutes dynamic stretching",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5 minutes static stretching",
+      "created_at": "2026-07-30T01:49:54.821Z"
+    },
+    {
+      "id": 19,
+      "user_id": 1,
+      "title": "push",
+      "warmup": "5-10 minutes dynamic stretching",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5 minutes static stretching",
+      "created_at": "2026-07-30T03:56:29.752Z"
+    },
+    {
+      "id": 20,
+      "user_id": 1,
+      "title": "Intermediate Chest + Legs Protocol",
+      "warmup": "5-10 minutes of cardio such as jogging on the treadmill or cycling, followed by dynamic stretching for the chest and legs, including arm circles, leg swings, and lunges",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5-10 minutes of static stretching for the chest and legs, including chest stretches, hamstring stretches, and quadriceps stretches",
+      "created_at": "2026-07-30T04:00:36.393Z"
+    },
+    {
+      "id": 21,
+      "user_id": 1,
+      "title": "Intermediate Back Protocol",
+      "warmup": "5-10 minutes on the treadmill or stationary bike to get the blood flowing and warm up the muscles, followed by dynamic stretching focusing on the back, such as arm circles and torso twists",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5-10 minutes of static stretching focusing on the back, including stretches for the latissimus dorsi, trapezius, and rhomboids",
+      "created_at": "2026-07-30T04:22:31.834Z"
+    },
+    {
+      "id": 22,
+      "user_id": 1,
+      "title": "Intermediate Chest Protocol",
+      "warmup": "5-10 minutes of light cardio such as jogging in place or jumping jacks, followed by dynamic stretching of the chest muscles such as arm circles and chest opens",
+      "difficulty": "Intermediate",
+      "duration_mins": 45,
+      "calories_estimated": 360,
+      "cooldown": "5-10 minutes of static stretching of the chest muscles, focusing on the pectoralis major",
+      "created_at": "2026-07-30T04:34:29.946Z"
+    }
+  ],
+  "workout_exercises": [
+    {
+      "id": 1,
+      "plan_id": 1,
+      "name": "Lat Pulldown",
+      "sets": 4,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Pull-Ups",
+      "category": "back"
+    },
+    {
+      "id": 2,
+      "plan_id": 1,
+      "name": "Bent Over Barbell Row",
+      "sets": 4,
+      "reps": "8-10 reps",
+      "rest_time": "90s",
+      "alternatives": "Single-Arm Dumbbell Row",
+      "category": "back"
+    },
+    {
+      "id": 3,
+      "plan_id": 1,
+      "name": "Deadlift",
+      "sets": 4,
+      "reps": "5-8 reps",
+      "rest_time": "150s",
+      "alternatives": "Barbell Row",
+      "category": "back"
+    },
+    {
+      "id": 4,
+      "plan_id": 1,
+      "name": "Single-Arm Dumbbell Row",
+      "sets": 4,
+      "reps": "12 reps",
+      "rest_time": "90s",
+      "alternatives": "Resistance Band Row",
+      "category": "back"
+    },
+    {
+      "id": 5,
+      "plan_id": 1,
+      "name": "Pull-Ups",
+      "sets": 4,
+      "reps": "Max Reps",
+      "rest_time": "90s",
+      "alternatives": "Inverted Rows",
+      "category": "back"
+    },
+    {
+      "id": 6,
+      "plan_id": 2,
+      "name": "Barbell Bench Press",
+      "sets": 3,
+      "reps": 10,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 7,
+      "plan_id": 2,
+      "name": "Incline Dumbbell Press",
+      "sets": 3,
+      "reps": 12,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 8,
+      "plan_id": 2,
+      "name": "Cable Chest Flyes",
+      "sets": 3,
+      "reps": 15,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 9,
+      "plan_id": 2,
+      "name": "Push-Ups",
+      "sets": 3,
+      "reps": 20,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 10,
+      "plan_id": 3,
+      "name": "Deadlift",
+      "sets": 3,
+      "reps": 6,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "back"
+    },
+    {
+      "id": 11,
+      "plan_id": 3,
+      "name": "Lat Pulldown",
+      "sets": 3,
+      "reps": 12,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "back"
+    },
+    {
+      "id": 12,
+      "plan_id": 4,
+      "name": "Bench Dips",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Overhead Dumbbell Extension",
+      "category": "triceps"
+    },
+    {
+      "id": 13,
+      "plan_id": 4,
+      "name": "Barbell Bicep Curls",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Dumbbell Hammer Curls",
+      "category": "biceps"
+    },
+    {
+      "id": 14,
+      "plan_id": 4,
+      "name": "Tricep Pushdowns",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Cable Rope Overhead Tricep Extensions",
+      "category": "triceps"
+    },
+    {
+      "id": 15,
+      "plan_id": 4,
+      "name": "Incline Dumbbell Curls",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Preacher Curls",
+      "category": "biceps"
+    },
+    {
+      "id": 16,
+      "plan_id": 4,
+      "name": "Overhead Cable Extensions",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Skull Crushers",
+      "category": "triceps"
+    },
+    {
+      "id": 17,
+      "plan_id": 4,
+      "name": "Hammer Curls",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Concentration Curls",
+      "category": "biceps"
+    },
+    {
+      "id": 18,
+      "plan_id": 5,
+      "name": "Bicep Curl",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Hammer Curl",
+      "category": "biceps"
+    },
+    {
+      "id": 19,
+      "plan_id": 5,
+      "name": "Tricep Pushdown",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Overhead Dumbbell Extension",
+      "category": "triceps"
+    },
+    {
+      "id": 20,
+      "plan_id": 5,
+      "name": "Shoulder Press",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "90s",
+      "alternatives": "Lateral Raise",
+      "category": "deltoids"
+    },
+    {
+      "id": 21,
+      "plan_id": 5,
+      "name": "Lateral Raise",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Front Raise",
+      "category": "deltoids"
+    },
+    {
+      "id": 22,
+      "plan_id": 5,
+      "name": "Tricep Dip",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Close-Grip Bench Press",
+      "category": "triceps"
+    },
+    {
+      "id": 23,
+      "plan_id": 5,
+      "name": "Rear Delt Fly",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Face Pull",
+      "category": "deltoids"
+    },
+    {
+      "id": 24,
+      "plan_id": 6,
+      "name": "Barbell Bench Press",
+      "sets": 3,
+      "reps": 10,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 25,
+      "plan_id": 6,
+      "name": "Incline Dumbbell Press",
+      "sets": 3,
+      "reps": 12,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 26,
+      "plan_id": 6,
+      "name": "Push-Ups",
+      "sets": 3,
+      "reps": 20,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 27,
+      "plan_id": 7,
+      "name": "Deadlift",
+      "sets": 3,
+      "reps": 6,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "back"
+    },
+    {
+      "id": 28,
+      "plan_id": 7,
+      "name": "Bent Over Row",
+      "sets": 3,
+      "reps": 10,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "back"
+    },
+    {
+      "id": 29,
+      "plan_id": 7,
+      "name": "Lat Pulldown",
+      "sets": 3,
+      "reps": 12,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "back"
+    },
+    {
+      "id": 30,
+      "plan_id": 8,
+      "name": "Squats",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Leg Press",
+      "category": "legs"
+    },
+    {
+      "id": 31,
+      "plan_id": 8,
+      "name": "Leg Press",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "90s",
+      "alternatives": "Hack Squats",
+      "category": "legs"
+    },
+    {
+      "id": 32,
+      "plan_id": 8,
+      "name": "Lunges",
+      "sets": 3,
+      "reps": "10-12 reps per leg",
+      "rest_time": "90s",
+      "alternatives": "Step-Ups",
+      "category": "legs"
+    },
+    {
+      "id": 33,
+      "plan_id": 8,
+      "name": "Leg Extensions",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Leg Curls",
+      "category": "legs"
+    },
+    {
+      "id": 34,
+      "plan_id": 8,
+      "name": "Leg Curls",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Glute-Ham Raises",
+      "category": "legs"
+    },
+    {
+      "id": 35,
+      "plan_id": 8,
+      "name": "Calf Raises",
+      "sets": 4,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Seated Calf Raises",
+      "category": "legs"
+    },
+    {
+      "id": 36,
+      "plan_id": 9,
+      "name": "Squats",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Leg Press",
+      "category": "Quadriceps, Hamstrings, Glutes"
+    },
+    {
+      "id": 37,
+      "plan_id": 9,
+      "name": "Leg Press",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "90s",
+      "alternatives": "Hack Squats",
+      "category": "Quadriceps, Hamstrings, Glutes"
+    },
+    {
+      "id": 38,
+      "plan_id": 9,
+      "name": "Lunges",
+      "sets": 3,
+      "reps": "10-12 reps per leg",
+      "rest_time": "90s",
+      "alternatives": "Step-Ups",
+      "category": "Quadriceps, Hamstrings, Glutes"
+    },
+    {
+      "id": 39,
+      "plan_id": 9,
+      "name": "Leg Extensions",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Leg Curls",
+      "category": "Quadriceps"
+    },
+    {
+      "id": 40,
+      "plan_id": 9,
+      "name": "Leg Curls",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Glute-Ham Raises",
+      "category": "Hamstrings"
+    },
+    {
+      "id": 41,
+      "plan_id": 9,
+      "name": "Calf Raises",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Seated Calf Raises",
+      "category": "Calves"
+    },
+    {
+      "id": 42,
+      "plan_id": 10,
+      "name": "Deadlift",
+      "sets": 3,
+      "reps": 6,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "back"
+    },
+    {
+      "id": 43,
+      "plan_id": 10,
+      "name": "Lat Pulldown",
+      "sets": 3,
+      "reps": 12,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "back"
+    },
+    {
+      "id": 44,
+      "plan_id": 10,
+      "name": "Pull-Ups",
+      "sets": 3,
+      "reps": 8,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "back"
+    },
+    {
+      "id": 45,
+      "plan_id": 11,
+      "name": "Pull-ups",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "90s",
+      "alternatives": "Lat Pulldowns",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 46,
+      "plan_id": 11,
+      "name": "Barbell Rows",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Seated Cable Rows",
+      "category": "trapezius, rhomboids, and latissimus dorsi"
+    },
+    {
+      "id": 47,
+      "plan_id": 11,
+      "name": "Lat Pulldowns",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Pull-aparts",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 48,
+      "plan_id": 11,
+      "name": "Seated Cable Rows",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Bent-over Barbell Rows",
+      "category": "trapezius, rhomboids, and latissimus dorsi"
+    },
+    {
+      "id": 49,
+      "plan_id": 11,
+      "name": "Deadlifts",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "120s",
+      "alternatives": "Bent-over Barbell Rows",
+      "category": "entire back, glutes, and hamstrings"
+    },
+    {
+      "id": 50,
+      "plan_id": 11,
+      "name": "Superman",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Hyperextensions",
+      "category": "erector spinae"
+    },
+    {
+      "id": 51,
+      "plan_id": 12,
+      "name": "Lat Pulldown",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Pull-ups or Assisted Pull-ups",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 52,
+      "plan_id": 12,
+      "name": "Seated Row",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Bent-over Barbell Rows",
+      "category": "trapezius and rhomboids"
+    },
+    {
+      "id": 53,
+      "plan_id": 12,
+      "name": "Deadlifts",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "90s",
+      "alternatives": "Bent-over Rows or Romanian Deadlifts",
+      "category": "entire back"
+    },
+    {
+      "id": 54,
+      "plan_id": 12,
+      "name": "Superman",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Hyperextensions",
+      "category": "erector spinae"
+    },
+    {
+      "id": 55,
+      "plan_id": 12,
+      "name": "Cable Row",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Dumbbell Rows",
+      "category": "trapezius and rhomboids"
+    },
+    {
+      "id": 56,
+      "plan_id": 12,
+      "name": "Pull-ups",
+      "sets": 3,
+      "reps": "as many as possible",
+      "rest_time": "90s",
+      "alternatives": "Assisted Pull-ups or Lat Pulldowns",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 57,
+      "plan_id": 13,
+      "name": "Pull-ups",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "90s",
+      "alternatives": "Lat Pulldowns",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 58,
+      "plan_id": 13,
+      "name": "Barbell Rows",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Seated Cable Rows",
+      "category": "trapezius, rhomboids, latissimus dorsi"
+    },
+    {
+      "id": 59,
+      "plan_id": 13,
+      "name": "Lat Pulldowns",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Pull-ups",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 60,
+      "plan_id": 13,
+      "name": "Seated Cable Rows",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Barbell Rows",
+      "category": "trapezius, rhomboids, latissimus dorsi"
+    },
+    {
+      "id": 61,
+      "plan_id": 13,
+      "name": "Deadlifts",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "120s",
+      "alternatives": "Bent-over Barbell Rows",
+      "category": "entire back, glutes, hamstrings"
+    },
+    {
+      "id": 62,
+      "plan_id": 13,
+      "name": "T-Bar Rows",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Dumbbell Rows",
+      "category": "latissimus dorsi, trapezius, rhomboids"
+    },
+    {
+      "id": 63,
+      "plan_id": 13,
+      "name": "Bent-over Dumbbell Rows",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "T-Bar Rows",
+      "category": "latissimus dorsi, trapezius, rhomboids"
+    },
+    {
+      "id": 64,
+      "plan_id": 13,
+      "name": "Superman",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Hyperextensions",
+      "category": "erector spinae"
+    },
+    {
+      "id": 65,
+      "plan_id": 14,
+      "name": "Bodyweight Row",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Inverted Rows",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 66,
+      "plan_id": 14,
+      "name": "Superman",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Hyperextensions",
+      "category": "erector spinae"
+    },
+    {
+      "id": 67,
+      "plan_id": 14,
+      "name": "Plank",
+      "sets": 3,
+      "reps": "30-60s hold",
+      "rest_time": "60s",
+      "alternatives": "Bird Dog",
+      "category": "trapezius, rhomboids, and latissimus dorsi"
+    },
+    {
+      "id": 68,
+      "plan_id": 14,
+      "name": "Lat Pulldown (using a resistance band or towel)",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Pull-aparts",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 69,
+      "plan_id": 14,
+      "name": "Scapular Push-up",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Wall Slides",
+      "category": "serratus anterior and trapezius"
+    },
+    {
+      "id": 70,
+      "plan_id": 14,
+      "name": "Bird Dog",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Cat-Cow Stretch",
+      "category": "erector spinae, latissimus dorsi, and trapezius"
+    },
+    {
+      "id": 71,
+      "plan_id": 14,
+      "name": "Reverse Fly (using bodyweight or resistance bands)",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Chest Expansion",
+      "category": "rhomboids and trapezius"
+    },
+    {
+      "id": 72,
+      "plan_id": 14,
+      "name": "Cat-Cow Stretch (hold each position for 5-10 seconds and repeat for 3 sets)",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Knee to Chest Stretch",
+      "category": "entire back"
+    },
+    {
+      "id": 73,
+      "plan_id": 15,
+      "name": "",
+      "sets": 3,
+      "reps": 10,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 74,
+      "plan_id": 16,
+      "name": "Barbell Bench Press",
+      "sets": 3,
+      "reps": 10,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 75,
+      "plan_id": 16,
+      "name": "Cable Chest Flyes",
+      "sets": 3,
+      "reps": 15,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 76,
+      "plan_id": 16,
+      "name": "Incline Dumbbell Press",
+      "sets": 3,
+      "reps": 12,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 77,
+      "plan_id": 16,
+      "name": "Push-Ups",
+      "sets": 3,
+      "reps": 20,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 78,
+      "plan_id": 17,
+      "name": "Pull-ups",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "90s",
+      "alternatives": "Lat Pulldowns",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 79,
+      "plan_id": 17,
+      "name": "Barbell Rows",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Seated Cable Rows",
+      "category": "trapezius, rhomboids"
+    },
+    {
+      "id": 80,
+      "plan_id": 17,
+      "name": "Lat Pulldowns",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Pull-aparts",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 81,
+      "plan_id": 17,
+      "name": "Seated Cable Rows",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Bent-over Barbell Rows",
+      "category": "trapezius, rhomboids"
+    },
+    {
+      "id": 82,
+      "plan_id": 17,
+      "name": "Deadlifts",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "120s",
+      "alternatives": "Bent-over Barbell Rows",
+      "category": "erector spinae, latissimus dorsi"
+    },
+    {
+      "id": 83,
+      "plan_id": 17,
+      "name": "Superman Rows",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Hyperextensions",
+      "category": "erector spinae, rhomboids"
+    },
+    {
+      "id": 84,
+      "plan_id": 18,
+      "name": "Barbell Bench Press",
+      "sets": 3,
+      "reps": 10,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 85,
+      "plan_id": 18,
+      "name": "Incline Dumbbell Press",
+      "sets": 3,
+      "reps": 12,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 86,
+      "plan_id": 18,
+      "name": "Cable Chest Flyes",
+      "sets": 3,
+      "reps": 15,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 87,
+      "plan_id": 18,
+      "name": "Push-Ups",
+      "sets": 3,
+      "reps": 20,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 88,
+      "plan_id": 18,
+      "name": "Hanging Leg Raise",
+      "sets": 3,
+      "reps": 12,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "core"
+    },
+    {
+      "id": 89,
+      "plan_id": 18,
+      "name": "Plank",
+      "sets": 3,
+      "reps": 60,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "core"
+    },
+    {
+      "id": 90,
+      "plan_id": 18,
+      "name": "Russian Twist",
+      "sets": 3,
+      "reps": 20,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "core"
+    },
+    {
+      "id": 91,
+      "plan_id": 18,
+      "name": "Ab Wheel Rollout",
+      "sets": 3,
+      "reps": 10,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "core"
+    },
+    {
+      "id": 92,
+      "plan_id": 19,
+      "name": "Barbell Bench Press",
+      "sets": 3,
+      "reps": 10,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 93,
+      "plan_id": 19,
+      "name": "Incline Dumbbell Press",
+      "sets": 3,
+      "reps": 12,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 94,
+      "plan_id": 19,
+      "name": "Cable Chest Flyes",
+      "sets": 3,
+      "reps": 15,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "chest"
+    },
+    {
+      "id": 95,
+      "plan_id": 19,
+      "name": "Overhead Barbell Press",
+      "sets": 3,
+      "reps": 8,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "shoulders"
+    },
+    {
+      "id": 96,
+      "plan_id": 19,
+      "name": "Dumbbell Lateral Raise",
+      "sets": 3,
+      "reps": 15,
+      "rest_time": "60s",
+      "alternatives": "",
+      "category": "shoulders"
+    },
+    {
+      "id": 97,
+      "plan_id": 20,
+      "name": "Barbell Bench Press",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "60-90s",
+      "alternatives": "Dumbbell Bench Press or Incline Bench Press",
+      "category": "chest"
+    },
+    {
+      "id": 98,
+      "plan_id": 20,
+      "name": "Incline Dumbbell Press",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Cable Flyes or Chest Press Machine",
+      "category": "chest"
+    },
+    {
+      "id": 99,
+      "plan_id": 20,
+      "name": "Squats",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "90-120s",
+      "alternatives": "Leg Press or Lunges",
+      "category": "legs"
+    },
+    {
+      "id": 100,
+      "plan_id": 20,
+      "name": "Leg Press",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Deadlifts or Leg Extensions",
+      "category": "legs"
+    },
+    {
+      "id": 101,
+      "plan_id": 20,
+      "name": "Lunges",
+      "sets": 3,
+      "reps": "10-12 reps (per leg)",
+      "rest_time": "60-90s",
+      "alternatives": "Leg Extensions or Leg Curls",
+      "category": "legs"
+    },
+    {
+      "id": 102,
+      "plan_id": 20,
+      "name": "Leg Extensions",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Leg Curls or Calf Raises",
+      "category": "legs"
+    },
+    {
+      "id": 103,
+      "plan_id": 21,
+      "name": "Pull-ups",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "90s",
+      "alternatives": "Lat Pulldowns",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 104,
+      "plan_id": 21,
+      "name": "Barbell Rows",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Seated Cable Rows",
+      "category": "trapezius, rhomboids, latissimus dorsi"
+    },
+    {
+      "id": 105,
+      "plan_id": 21,
+      "name": "Lat Pulldowns",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Pull-aparts",
+      "category": "latissimus dorsi"
+    },
+    {
+      "id": 106,
+      "plan_id": 21,
+      "name": "Seated Cable Rows",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "90s",
+      "alternatives": "Bent-over Barbell Rows",
+      "category": "trapezius, rhomboids, latissimus dorsi"
+    },
+    {
+      "id": 107,
+      "plan_id": 21,
+      "name": "Deadlifts",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "120s",
+      "alternatives": "Bent-over Rows",
+      "category": "latissimus dorsi, trapezius, rhomboids, entire back"
+    },
+    {
+      "id": 108,
+      "plan_id": 21,
+      "name": "Superman",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Hyperextensions",
+      "category": "erector spinae, latissimus dorsi"
+    },
+    {
+      "id": 109,
+      "plan_id": 22,
+      "name": "Push-up",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Incline push-up or knee push-up",
+      "category": "chest"
+    },
+    {
+      "id": 110,
+      "plan_id": 22,
+      "name": "Chest Dip (using a chair or bench)",
+      "sets": 3,
+      "reps": "12-15 reps",
+      "rest_time": "60s",
+      "alternatives": "Push-up with claps or chest press with resistance band",
+      "category": "chest"
+    },
+    {
+      "id": 111,
+      "plan_id": 22,
+      "name": "Burpee",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "90s",
+      "alternatives": "Squat to push-up or mountain climber",
+      "category": "chest"
+    },
+    {
+      "id": 112,
+      "plan_id": 22,
+      "name": "Plank to Push-up",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Wall push-up or decline push-up",
+      "category": "chest"
+    },
+    {
+      "id": 113,
+      "plan_id": 22,
+      "name": "Chest Stretch Push-up",
+      "sets": 3,
+      "reps": "10-12 reps",
+      "rest_time": "60s",
+      "alternatives": "Single-arm push-up or diamond push-up",
+      "category": "chest"
+    },
+    {
+      "id": 114,
+      "plan_id": 22,
+      "name": "Plyometric Push-up",
+      "sets": 3,
+      "reps": "8-10 reps",
+      "rest_time": "90s",
+      "alternatives": "Medicine ball push-up or clapping push-up",
+      "category": "chest"
+    }
+  ],
+  "workout_history": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "plan_id": 3,
+      "title": "estrfj",
+      "duration_mins": 45,
+      "calories_burned": 360,
+      "muscles_trained": "back",
+      "completion_status": "Completed",
+      "completed_at": "2026-07-29T13:44:30.506Z"
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "plan_id": 15,
+      "title": "dshdgmhjbn",
+      "duration_mins": 30,
+      "calories_burned": 240,
+      "muscles_trained": "chest",
+      "completion_status": "Completed",
+      "completed_at": "2026-07-29T14:06:49.023Z"
+    },
+    {
+      "id": 3,
+      "user_id": 1,
+      "plan_id": null,
+      "title": "15-Min Streak Saver",
+      "duration_mins": 15,
+      "calories_burned": 120,
+      "muscles_trained": "cardio, chest, legs, core",
+      "completion_status": "Completed",
+      "completed_at": "2026-07-29T14:07:18.222Z"
+    },
+    {
+      "id": 4,
+      "user_id": 1,
+      "plan_id": null,
+      "title": "15-Min Streak Saver",
+      "duration_mins": 15,
+      "calories_burned": 120,
+      "muscles_trained": "cardio, chest, legs, core",
+      "completion_status": "Completed",
+      "completed_at": "2026-07-29T14:08:08.556Z"
+    },
+    {
+      "id": 5,
+      "user_id": 1,
+      "plan_id": 16,
+      "title": "rhd",
+      "duration_mins": 60,
+      "calories_burned": 480,
+      "muscles_trained": "chest",
+      "completion_status": "Completed",
+      "completed_at": "2026-07-29T14:13:41.528Z"
+    },
+    {
+      "id": 6,
+      "user_id": 1,
+      "plan_id": 18,
+      "title": "edf",
+      "duration_mins": 45,
+      "calories_burned": 360,
+      "muscles_trained": "chest, core",
+      "completion_status": "Completed",
+      "completed_at": "2026-07-30T01:50:40.205Z"
+    },
+    {
+      "id": 7,
+      "user_id": 1,
+      "plan_id": 19,
+      "title": "push",
+      "duration_mins": 45,
+      "calories_burned": 360,
+      "muscles_trained": "chest, shoulders",
+      "completion_status": "Completed",
+      "completed_at": "2026-07-30T03:56:54.234Z"
+    }
+  ],
+  "streaks": [
+    {
+      "user_id": 1,
+      "current_streak": 2,
+      "longest_streak": 2,
+      "last_completed_date": "2026-07-30T01:50:40.209Z",
+      "freeze_used_date": null
+    },
+    {
+      "user_id": 3,
+      "current_streak": 0,
+      "longest_streak": 0,
+      "last_completed_date": null,
+      "freeze_used_date": null
+    },
+    {
+      "user_id": 901,
+      "current_streak": 0,
+      "longest_streak": 0,
+      "last_completed_date": null,
+      "freeze_used_date": null
+    },
+    {
+      "user_id": 4,
+      "current_streak": 0,
+      "longest_streak": 0,
+      "last_completed_date": null,
+      "freeze_used_date": null
+    }
+  ],
+  "achievements": [],
+  "notifications": []
+}

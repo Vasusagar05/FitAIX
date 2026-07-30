@@ -20,7 +20,6 @@ export const ChatInterface: React.FC = () => {
       timestamp: '12:50 PM',
       aiConfidence: 99,
       actionCards: [
-        { id: 'ac-1', title: 'Enable Travel Mode', description: 'Switch to bodyweight resistance', actionType: 'switch_scenario' },
         { id: 'ac-2', title: '7-Min Micro Workout', description: 'Quick streak save session', actionType: 'trigger_micro_workout' }
       ]
     }
@@ -52,16 +51,13 @@ export const ChatInterface: React.FC = () => {
   };
 
   const handleAction = (type: string) => {
-    if (type === 'switch_scenario') {
-      setScenarioMode('travel');
-      handleSend('I want to enable Travel Mode.');
-    } else if (type === 'trigger_micro_workout') {
+    if (type === 'trigger_micro_workout') {
       setMicroWorkoutOpen(true);
     }
   };
 
   return (
-    <GlassCard glow="violet" className="flex flex-col h-[650px]">
+    <GlassCard glow="violet" className="flex flex-col h-[calc(100vh-175px)] md:h-[650px]">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-obsidian-700/60 pb-3 mb-4">
         <div className="flex items-center gap-3">
@@ -77,7 +73,7 @@ export const ChatInterface: React.FC = () => {
               Coach Rachel
               <Badge variant="violet" glow>Neural AI</Badge>
             </h3>
-            <p className="text-xs text-slate-400 font-mono">Context: 88% Recovery • {scenarioMode.toUpperCase()} Mode</p>
+            <p className="text-[11px] sm:text-xs text-slate-400 font-mono">Context: 88% Recovery • {scenarioMode.toUpperCase()} Mode</p>
           </div>
         </div>
       </div>
@@ -90,22 +86,20 @@ export const ChatInterface: React.FC = () => {
             className={`flex items-start gap-3 ${msg.sender === 'user' ? 'flex-row-reverse' : ''}`}
           >
             <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
-                msg.sender === 'user'
+              className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${msg.sender === 'user'
                   ? 'bg-neon-cyan text-obsidian-950 font-bold'
                   : 'bg-neon-violet/20 text-neon-violet border border-neon-violet/40'
-              }`}
+                }`}
             >
               {msg.sender === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
             </div>
 
-            <div className={`space-y-2 max-w-[80%] ${msg.sender === 'user' ? 'text-right' : ''}`}>
+            <div className={`space-y-2 max-w-[90%] sm:max-w-[80%] ${msg.sender === 'user' ? 'text-right' : ''}`}>
               <div
-                className={`p-3.5 rounded-2xl text-sm leading-relaxed ${
-                  msg.sender === 'user'
+                className={`p-3.5 rounded-2xl text-sm leading-relaxed ${msg.sender === 'user'
                     ? 'bg-neon-cyan/20 border border-neon-cyan/40 text-white rounded-tr-none'
                     : 'bg-obsidian-900/90 border border-obsidian-700 text-slate-200 rounded-tl-none'
-                }`}
+                  }`}
               >
                 {msg.text}
               </div>
@@ -147,12 +141,7 @@ export const ChatInterface: React.FC = () => {
 
       {/* Suggested Quick Prompts */}
       <div className="flex items-center gap-2 overflow-x-auto py-2 scrollbar-none border-t border-obsidian-700/40">
-        <button
-          onClick={() => handleSend("Switch to Travel Mode")}
-          className="px-3 py-1 rounded-full bg-obsidian-800/80 border border-obsidian-700 text-xs text-slate-300 hover:text-white hover:border-neon-cyan shrink-0 cursor-pointer"
-        >
-          🧳 Enable Travel Mode
-        </button>
+
         <button
           onClick={() => handleSend("I only have 20 minutes today")}
           className="px-3 py-1 rounded-full bg-obsidian-800/80 border border-obsidian-700 text-xs text-slate-300 hover:text-white hover:border-neon-cyan shrink-0 cursor-pointer"

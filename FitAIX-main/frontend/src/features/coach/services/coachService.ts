@@ -1,7 +1,6 @@
-import { apiClient, ApiResponse } from '@/lib/apiClient';
-import { ChatMessage } from '../types';
+import { apiClient } from "@/lib/apiClient";
 
-export const sendChatMessage = async (message: string): Promise<ChatMessage> => {
-  const response = await apiClient.post<ApiResponse<ChatMessage>>('/chat', { message });
-  return response.data.data;
+export const getCoachResponse = async (message: string) => {
+  const res = await apiClient.post("/coach", { message });
+  return res.data.data;
 };

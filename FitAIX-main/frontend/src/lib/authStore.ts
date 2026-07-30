@@ -9,7 +9,7 @@ export interface User {
   avatarUrl: string;
   goal: string;
   scenarioMode: string;
-  viewMode: string;
+
 }
 
 interface AuthState {
@@ -21,6 +21,7 @@ interface AuthState {
   
   // Actions
   login: (username: string, password: string) => Promise<boolean>;
+  loginWithFirebase: (idToken: string) => Promise<boolean>;
   logout: () => void;
   checkAuth: () => Promise<void>;
 }
@@ -65,6 +66,27 @@ export const useAuthStore = create<AuthState>((set) => {
         return false;
       }
     },
+
+    loginWithFirebase: async (idToken) => {
+      set({ isLoading: true, error: null });
+      try {
+        const response = await apiClient.post('/auth/firebase', { idToken });
+        const { token, user } = response.data.data;
+        
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('fitaix_token', token);
+          localStorage.setItem('fitaix_user', JSON.stringify(user));
+        }
+        
+        set({ token, user, isAuthenticated: true, isLoading: false, error: null });
+        return true;
+      } catch (err: any) {
+        const errMsg = typeof err === 'string' ? err : (err.message || 'Failed to authenticate with Google');
+        set({ error: errMsg, isLoading: false });
+        return false;
+      }
+    },
+
 
     logout: () => {
       if (typeof window !== 'undefined') {

@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Providers } from '@/shared/components/Providers';
 import { Sidebar } from '@/shared/components/Sidebar';
 import { Header } from '@/shared/components/Header';
+import { MobileBottomNav } from '@/shared/components/MobileBottomNav';
 import { MicroWorkoutModal } from '@/features/workout/components/MicroWorkoutModal';
 
 import Home from '@/pages/Home';
@@ -14,11 +15,12 @@ import Progress from '@/pages/Progress';
 import Settings from '@/pages/Settings';
 import Workout from '@/pages/Workout';
 import Login from '@/pages/Login';
-import Admin from '@/pages/Admin';
+
 import { useAuthStore } from '@/lib/authStore';
 
 export default function App() {
   const { isAuthenticated, user, checkAuth, isLoading } = useAuthStore();
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
     checkAuth();
@@ -39,15 +41,18 @@ export default function App() {
 
   return (
     <Providers>
-      <div className="flex h-screen overflow-hidden bg-obsidian-950 text-slate-100">
-        <Sidebar />
+      <div className="flex h-screen overflow-hidden bg-obsidian-950 text-slate-100 relative">
+        <Sidebar
+          isOpen={isMobileSidebarOpen}
+          onClose={() => setIsMobileSidebarOpen(false)}
+        />
         <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-          <Header />
-          <main className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6 scrollbar-thin">
+          <Header onToggleSidebar={() => setIsMobileSidebarOpen(true)} />
+          <main className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 pb-24 md:pb-6 space-y-4 sm:space-y-6 scrollbar-thin">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/admin" element={user?.role === 'admin' ? <Admin /> : <Navigate to="/dashboard" replace />} />
+
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/coach" element={<Coach />} />
               <Route path="/meals" element={<Meals />} />
@@ -58,6 +63,7 @@ export default function App() {
             </Routes>
           </main>
         </div>
+        <MobileBottomNav />
       </div>
       <MicroWorkoutModal />
     </Providers>

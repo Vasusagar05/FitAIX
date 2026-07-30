@@ -2,6 +2,23 @@ import express from 'express';
 import cors from 'cors';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+import {
+  dbInit,
+  getProfile,
+  updateProfile,
+  logWeight,
+  getWeightHistory,
+  getStreak,
+  getWorkoutHistory,
+  getNotifications,
+  markNotificationsRead
+} from './db/db';
+
+import { authRouter, authenticateToken } from './routes/auth';
+import { workoutsRouter } from './routes/workouts';
+import { mealsRouter } from './routes/meals';
+import { progressRouter } from './routes/progress';
+import { getGroqChatCompletion } from './services/groqService';
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -16,7 +33,6 @@ const io = new Server(httpServer, {
   },
 });
 
-// Socket.IO Mock Events
 io.on('connection', (socket) => {
   console.log('Client connected:', socket.id);
   socket.on('disconnect', () => {
@@ -28,7 +44,7 @@ setInterval(() => {
   const mockSocketEvents = [
     {
       event: 'workout_updated',
-      payload: { message: 'AI auto-decreased Bench Press volume by 5% based on elevated morning RHR.', timestamp: new Date().toLocaleTimeString() }
+      payload: { message: 'AI auto-decreased volume based on elevated morning RHR.', timestamp: new Date().toLocaleTimeString() }
     },
     {
       event: 'recovery_score_updated',
@@ -36,7 +52,7 @@ setInterval(() => {
     },
     {
       event: 'notification_received',
-      payload: { title: 'Hydration Target Alert', message: 'Hydration status optimal for upcoming Push A session.', timestamp: new Date().toLocaleTimeString() }
+      payload: { title: 'Hydration Target Alert', message: 'Hydration status optimal for upcoming session.', timestamp: new Date().toLocaleTimeString() }
     }
   ];
 
@@ -45,224 +61,257 @@ setInterval(() => {
   io.emit('live_feed', randomEvent.payload);
 }, 8000);
 
-
-// REST API Routes
 const apiRouter = express.Router();
 
-const USERS: Record<string, any> = {
-  'user': {
-    id: 'usr-901',
-    name: 'Alex Vance',
-    username: 'user',
-    role: 'user',
-    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150',
-    goal: 'hypertrophy',
-    scenarioMode: 'normal',
-    viewMode: 'advanced',
-  },
-  'admin': {
-    id: 'usr-999',
-    name: 'Admin Moderator',
-    username: 'admin',
-    role: 'admin',
-    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150',
-    goal: 'management',
-    scenarioMode: 'normal',
-    viewMode: 'advanced',
-  }
-};
+// Register modular routers
+apiRouter.use('/auth', authRouter);
+apiRouter.use('/workouts', workoutsRouter);
+apiRouter.use('/meals', mealsRouter);
+apiRouter.use('/progress', progressRouter);
 
-const authenticateToken = (req: any, res: any, next: any) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-  
-  if (!token) {
-    return res.status(401).json({ success: false, error: 'Access token required' });
-  }
-  
-  if (token === 'mock-user-token-123') {
-    req.user = USERS['user'];
-    next();
-  } else if (token === 'mock-admin-token-456') {
-    req.user = USERS['admin'];
-    next();
-  } else {
-    return res.status(403).json({ success: false, error: 'Invalid or expired token' });
-  }
-};
-
-apiRouter.post('/auth/login', (req, res) => {
-  const { username, password } = req.body;
-  
-  if (username === 'admin' && password === 'admin') {
-    res.json({
-      success: true,
-      data: {
-        token: 'mock-admin-token-456',
-        user: USERS['admin']
-      }
-    });
-  } else if (username === 'user' && password === 'password') {
-    res.json({
-      success: true,
-      data: {
-        token: 'mock-user-token-123',
-        user: USERS['user']
-      }
-    });
-  } else {
-    res.status(401).json({
-      success: false,
-      error: 'Invalid username or password'
-    });
-  }
-});
-
-apiRouter.get('/auth/me', authenticateToken, (req: any, res: any) => {
-  res.json({
-    success: true,
-    data: req.user
-  });
-});
-
-apiRouter.get('/admin/stats', authenticateToken, (req: any, res: any) => {
-  if (req.user.role !== 'admin') {
-    return res.status(403).json({ success: false, error: 'Admin access required' });
-  }
-  
-  res.json({
-    success: true,
-    data: {
-      totalUsers: 148,
-      activeSubscriptions: 124,
-      neuralEngineLoad: '32%',
-      databaseStatus: 'healthy',
-      latencyMs: 14,
-      systemAlerts: [
-        { id: '1', level: 'warning', message: 'High CPU load on Socket processor: 76%', time: '10 mins ago' },
-        { id: '2', level: 'info', message: 'Neural weights database successfully backed up.', time: '1 hour ago' }
-      ],
-      userList: [
-        { id: 'usr-901', name: 'Alex Vance', email: 'alex@fitaix.com', role: 'user', lastActive: 'Just now' },
-        { id: 'usr-902', name: 'Sarah Connor', email: 'sarah@fitaix.com', role: 'user', lastActive: '5 mins ago' },
-        { id: 'usr-903', name: 'Bruce Wayne', email: 'bruce@fitaix.com', role: 'user', lastActive: '12 mins ago' },
-        { id: 'usr-999', name: 'Admin Moderator', email: 'admin@fitaix.com', role: 'admin', lastActive: 'Just now' }
-      ]
+// ---------------- PROFILE & SETTINGS ROUTES ----------------
+apiRouter.get('/user/profile', authenticateToken, async (req: any, res) => {
+  const userId = req.user.id;
+  try {
+    if (userId === 901 || userId === 999) {
+      return res.json({
+        success: true,
+        data: {
+          full_name: req.user.name,
+          age: 26,
+          gender: 'Male',
+          height: 182,
+          weight: 81.5,
+          fitness_goal: 'Muscle Gain',
+          bmi: 24.6,
+          experience_level: 'Intermediate',
+          workout_duration: 45,
+          equipment: 'Gym'
+        }
+      });
     }
-  });
-});
 
-apiRouter.post('/admin/simulate-event', authenticateToken, (req: any, res: any) => {
-  if (req.user.role !== 'admin') {
-    return res.status(403).json({ success: false, error: 'Admin access required' });
+    const profile = await getProfile(userId);
+    if (!profile) {
+      return res.status(404).json({ success: false, error: 'Profile not found' });
+    }
+
+    const heightInM = profile.height / 100;
+    const bmi = Number((profile.weight / (heightInM * heightInM)).toFixed(1));
+
+    res.json({
+      success: true,
+      data: {
+        ...profile,
+        bmi
+      }
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
   }
-  
-  const { eventType } = req.body;
-  let payload = {};
-  let event = '';
+});
 
-  if (eventType === 'workout') {
-    event = 'workout_updated';
-    payload = { message: 'AI dynamically adjusted chest volume by +10% based on high recovery score.', timestamp: new Date().toLocaleTimeString() };
-  } else if (eventType === 'recovery') {
-    event = 'recovery_score_updated';
-    payload = { overallScore: 94, hrvMs: 74, message: 'Neural HRV spikes to 74ms (+9%). Recommendation: Push load limits.', timestamp: new Date().toLocaleTimeString() };
-  } else {
-    event = 'notification_received';
-    payload = { title: 'Admin Manual Override', message: 'Admin triggered a global optimization reset.', timestamp: new Date().toLocaleTimeString() };
+apiRouter.put('/user/profile', authenticateToken, async (req: any, res) => {
+  const userId = req.user.id;
+  const { fullName, age, gender, height, weight, fitnessGoal, experienceLevel, workoutDuration, equipment } = req.body;
+
+  try {
+    if (userId === 901 || userId === 999) {
+      return res.json({ success: true, message: 'Mock Profile updated (In-Memory only)' });
+    }
+
+    const currentProfile = await getProfile(userId);
+    const weightChanged = currentProfile && Number(currentProfile.weight) !== Number(weight);
+
+    const updated = await updateProfile(
+      userId,
+      fullName,
+      Number(age),
+      gender,
+      Number(height),
+      Number(weight),
+      fitnessGoal,
+      experienceLevel,
+      Number(workoutDuration),
+      equipment
+    );
+
+    if (weightChanged) {
+      await logWeight(userId, Number(weight));
+    }
+
+    res.json({ success: true, data: updated });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
   }
-
-  io.emit(event, payload);
-  io.emit('live_feed', payload);
-
-  res.json({ success: true, message: `Simulated event: ${event}` });
 });
 
-apiRouter.get('/dashboard', authenticateToken, (req: any, res: any) => {
-  res.json({
-    success: true,
-    data: {
-      user: req.user,
-      recoveryScore: {
-        overall: 88,
-        hrvMs: 68,
-        sleepHours: 8.2,
-        readiness: { chest: 85, back: 95, legs: 72, shoulders: 80, arms: 90, core: 98 },
-      },
-      streak: { currentDays: 14, shieldActive: true, shieldsLeft: 2 },
-      calories: { target: 2600, burned: 640, consumed: 1850 },
-      hydration: { targetMl: 3500, consumedMl: 2250 },
-    },
-  });
+// ---------------- WEIGHT TRACKING ROUTES ----------------
+apiRouter.get('/weight/history', authenticateToken, async (req: any, res) => {
+  const userId = req.user.id;
+  try {
+    if (userId === 901 || userId === 999) {
+      return res.json({
+        success: true,
+        data: [
+          { weight: 83.5, logged_date: '2026-07-01' },
+          { weight: 82.8, logged_date: '2026-07-08' },
+          { weight: 82.0, logged_date: '2026-07-15' },
+          { weight: 81.5, logged_date: '2026-07-22' }
+        ]
+      });
+    }
+
+    const history = await getWeightHistory(userId);
+    res.json({ success: true, data: history });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
+apiRouter.post('/weight/history', authenticateToken, async (req: any, res) => {
+  const userId = req.user.id;
+  const { weight } = req.body;
 
-apiRouter.get('/workouts/today', (req, res) => {
-  res.json({
-    success: true,
-    data: {
-      id: 'session-001',
-      title: 'Hypertrophy Push & Core A',
-      subtitle: 'AI Adapted: Load -5% due to 68ms HRV recovery score',
-      estimatedDurationMins: 45,
-      targetMuscles: ['chest', 'shoulders', 'arms', 'core'],
-      scenario: 'normal',
-      version: 'v2.4-AI-Optimized',
-      isCompleted: false,
-      exercises: [
-        {
-          id: 'ex-1',
-          name: 'Incline Dumbbell Bench Press',
-          category: 'chest',
-          targetMuscles: ['Upper Chest', 'Anterior Delts'],
-          equipmentNeeded: 'Dumbbells, Bench',
-          tempo: '3-1-1-0',
-          restTimerSeconds: 90,
-          aiAdjustmentReason: 'RPE 8 -> 7. Volume auto-decreased by 5% based on HRV pulse.',
-          aiConfidencePercent: 96,
-          sets: [
-            { setNumber: 1, targetReps: 10, weightLbs: 70, completed: true, completedReps: 10 },
-            { setNumber: 2, targetReps: 10, weightLbs: 70, completed: false, completedReps: 0 },
-            { setNumber: 3, targetReps: 8, weightLbs: 70, completed: false, completedReps: 0 },
-          ],
-        },
-        {
-          id: 'ex-2',
-          name: 'Seated Overhead Dumbbell Press',
-          category: 'shoulders',
-          targetMuscles: ['Front Delts', 'Triceps'],
-          equipmentNeeded: 'Dumbbells',
-          tempo: '2-0-1-0',
-          restTimerSeconds: 75,
-          aiAdjustmentReason: 'Substituted Barbell for Dumbbell to reduce axial spine compression.',
-          aiConfidencePercent: 92,
-          sets: [
-            { setNumber: 1, targetReps: 12, weightLbs: 50, completed: false, completedReps: 0 },
-            { setNumber: 2, targetReps: 10, weightLbs: 50, completed: false, completedReps: 0 },
-          ],
-        },
-      ],
-    },
-  });
+  if (!weight) return res.status(400).json({ success: false, error: 'Weight is required' });
+
+  try {
+    if (userId === 901 || userId === 999) {
+      return res.json({ success: true, message: 'Mock weight logged' });
+    }
+
+    const entry = await logWeight(userId, Number(weight));
+    res.json({ success: true, data: entry });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
-apiRouter.patch('/exercises/:id', (req, res) => {
-  res.json({
-    success: true,
-    data: { exerciseId: req.params.id, updatedFields: req.body },
-    message: 'Exercise updated successfully.',
-  });
+// ---------------- STREAKS ENDPOINT ----------------
+apiRouter.get('/streaks', authenticateToken, async (req: any, res) => {
+  const userId = req.user.id;
+  try {
+    if (userId === 901 || userId === 999) {
+      return res.json({
+        success: true,
+        data: {
+          current_streak: 14,
+          longest_streak: 20,
+          freeze_used_date: null,
+          achievements: [{ badge_name: '3 Day Streak' }, { badge_name: '7 Day Streak' }],
+          completions: [new Date().toISOString().split('T')[0]]
+        }
+      });
+    }
+
+    const streak = await getStreak(userId);
+    const history = await getWorkoutHistory(userId);
+    const completions = Array.from(new Set(history.map((h: any) => new Date(h.completed_at).toISOString().split('T')[0])));
+
+    res.json({
+      success: true,
+      data: {
+        ...streak,
+        achievements: [],
+        completions
+      }
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
-apiRouter.post('/chat', (req, res) => {
+// ---------------- RECOMMENDATIONS ENGINE ----------------
+apiRouter.get('/dashboard/recommendations', authenticateToken, async (req: any, res) => {
+  const userId = req.user.id;
+  try {
+    if (userId === 901 || userId === 999) {
+      return res.json({
+        success: true,
+        data: {
+          recommendation: 'Push Day (Chest focus)',
+          reason: 'Your shoulders and chest are fully recovered (Readiness: 92%). Suggest maximizing hypertrophic load.'
+        }
+      });
+    }
+
+    const history = await getWorkoutHistory(userId);
+    let recommendation = 'Full Body Workout';
+    let reason = 'Keep your baseline physical conditioning active today.';
+
+    if (history.length > 0) {
+      const last = history[0];
+      const lastMuscles = (last.muscles_trained || '').toLowerCase();
+
+      if (lastMuscles.includes('chest') || lastMuscles.includes('shoulders')) {
+        recommendation = 'Back Day (Pull Focus)';
+        reason = 'Avoid taxing the anterior deltoids and chest in consecutive sessions. Let them recover.';
+      } else if (lastMuscles.includes('back')) {
+        recommendation = 'Leg Day (Lower Body)';
+        reason = 'Back musculature demands adequate recovery. Pivot focus to posterior chain and legs.';
+      } else if (lastMuscles.includes('legs')) {
+        recommendation = 'Core & Mobility session';
+        reason = 'Lower body recovery is high-energy. Focus on active flexibility and core strength.';
+      }
+    }
+
+    res.json({
+      success: true,
+      data: { recommendation, reason }
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ---------------- NOTIFICATIONS ENDPOINTS ----------------
+apiRouter.get('/notifications', authenticateToken, async (req: any, res) => {
+  const userId = req.user.id;
+  try {
+    if (userId === 901 || userId === 999) {
+      return res.json({
+        success: true,
+        data: [
+          { id: 1, title: 'Daily Hydro Target', message: 'Hydration verified optimal.', read: false, created_at: new Date() }
+        ]
+      });
+    }
+
+    const list = await getNotifications(userId);
+    res.json({ success: true, data: list });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+apiRouter.post('/notifications/read', authenticateToken, async (req: any, res) => {
+  const userId = req.user.id;
+  try {
+    if (userId !== 901 && userId !== 999) {
+      await markNotificationsRead(userId);
+    }
+    res.json({ success: true });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ---------------- MISC/COACH CHAT ENDPOINTS ----------------
+apiRouter.post('/chat', async (req, res) => {
   const userMessage = req.body?.message || '';
-  let responseText = "I've recalibrated your training load based on your latest recovery telemetry. How else can I optimize your routine?";
-  
-  if (userMessage.toLowerCase().includes('travel')) {
-    responseText = "Travel Mode activated! I've swapped heavy iron exercises for high-tension bodyweight and resistance band protocols.";
-  } else if (userMessage.toLowerCase().includes('20 min') || userMessage.toLowerCase().includes('time')) {
-    responseText = "Express Mode triggered! I've compressed your Push A session into a 20-minute mechanical tension superset.";
+  let responseText = '';
+
+  try {
+    const systemPrompt = "You are Coach Rachel, an elite AI Fitness & Performance Coach at FitAIX. You adapt plans based on biometric telemetry (HRV, CNS fatigue, streaks). Keep your response encouraging, highly actionable, concise (under 3 sentences), and professional.";
+    const response = await getGroqChatCompletion(systemPrompt, userMessage);
+    if (response) {
+      responseText = response;
+    }
+  } catch (err) {
+    console.error('Groq /chat failed:', err);
   }
+
+
 
   res.json({
     success: true,
@@ -271,62 +320,103 @@ apiRouter.post('/chat', (req, res) => {
       text: responseText,
       sender: 'rachel',
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      aiConfidence: 97,
+      aiConfidence: 99,
       actionCards: [
-        { id: 'act-1', title: 'Enable Travel Mode', description: 'Switch to bodyweight / resistance bands', actionType: 'switch_scenario' },
+
         { id: 'act-2', title: 'Launch 7-Min Micro Workout', description: 'Protect streak with short session', actionType: 'trigger_micro_workout' }
       ]
     },
   });
 });
 
-apiRouter.get('/progress', (req, res) => {
-  res.json({
-    success: true,
-    data: {
-      points: [
-        { date: 'May 1', bench1RM: 215, squat1RM: 285, bodyWeightLbs: 178.5, adherenceRatePercent: 90 },
-        { date: 'Jun 1', bench1RM: 225, squat1RM: 300, bodyWeightLbs: 179.8, adherenceRatePercent: 96 },
-        { date: 'Jul 1', bench1RM: 235, squat1RM: 315, bodyWeightLbs: 180.8, adherenceRatePercent: 98 },
-        { date: 'Jul 15', bench1RM: 242, squat1RM: 325, bodyWeightLbs: 181.5, adherenceRatePercent: 100 },
-      ],
-      aiEvents: [
-        { id: 'e1', date: 'Yesterday', title: 'Fatigue Auto-Compensation', category: 'volume_adjustment', description: 'Adjusted volume by -1 set based on 42ms HRV pulse.', impactBadge: '-15% Nervous Fatigue' },
-        { id: 'e2', date: '3 Days Ago', title: 'Streak Shield Auto-Deployed', category: 'streak_shield', description: 'Preserved 14-day streak during flight delay.', impactBadge: 'Streak Protected' }
-      ]
+apiRouter.get('/dashboard', authenticateToken, async (req: any, res: any) => {
+  const userId = req.user.id;
+  try {
+    if (userId === 901 || userId === 999) {
+      return res.json({
+        success: true,
+        data: {
+          user: req.user,
+          recoveryScore: {
+            overall: 88,
+            hrvMs: 68,
+            sleepHours: 8.2,
+            readiness: { chest: 85, back: 95, legs: 72, shoulders: 80, arms: 90, core: 98 },
+          },
+          streak: { currentDays: 14, shieldActive: true, shieldsLeft: 2 },
+          calories: { target: 2600, burned: 640, consumed: 1850 },
+          hydration: { targetMl: 3500, consumedMl: 2250 },
+          steps: 8425,
+          distanceKm: 6.2,
+        },
+      });
     }
-  });
+
+    const profile = await getProfile(userId);
+    const streak = await getStreak(userId);
+
+    res.json({
+      success: true,
+      data: {
+        user: { ...req.user, name: profile?.full_name || req.user.username },
+        recoveryScore: {
+          overall: 85,
+          hrvMs: 65,
+          sleepHours: 7.8,
+          readiness: { chest: 80, back: 85, legs: 90, shoulders: 80, arms: 90, core: 95 },
+        },
+        streak: { currentDays: streak.current_streak, shieldActive: !streak.freeze_used_date, shieldsLeft: streak.freeze_used_date ? 0 : 1 },
+        calories: { target: profile?.fitness_goal === 'Weight Loss' ? 2000 : 2800, burned: 450, consumed: 1600 },
+        hydration: { targetMl: 3000, consumedMl: 2000 },
+        steps: 7250,
+        distanceKm: 5.4,
+      }
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
-apiRouter.get('/schedule', (req, res) => {
-  res.json({
-    success: true,
-    data: [
-      { day: 'Mon', title: 'Hypertrophy Push A', muscle: 'Chest & Shoulders', stressLevel: 'amber', isCompleted: true },
-      { day: 'Tue', title: 'Power Pull & Biceps', muscle: 'Back & Biceps', stressLevel: 'emerald', isCompleted: true },
-      { day: 'Wed', title: 'Legs & Core Overload', muscle: 'Quads & Calves', stressLevel: 'rose', isCompleted: false, warning: 'High Hamstring Overuse Risk' },
-      { day: 'Thu', title: 'Active Recovery & Mobility', muscle: 'Full Body Flexibility', stressLevel: 'emerald', isCompleted: false },
-      { day: 'Fri', title: 'Upper Body Pump B', muscle: 'Chest, Arms & Back', stressLevel: 'amber', isCompleted: false },
-      { day: 'Sat', title: 'Posterior Chain Explosive', muscle: 'Hamstrings & Glutes', stressLevel: 'amber', isCompleted: false },
-      { day: 'Sun', title: 'Rest & Neural Reset', muscle: 'Recovery', stressLevel: 'emerald', isCompleted: false },
-    ]
-  });
-});
-
-apiRouter.get('/meals', (req, res) => {
-  res.json({
-    success: true,
-    data: [
-      { id: 'm1', title: 'Anabolic Berry Protein Oats', mealType: 'Breakfast', calories: 520, proteinGrams: 45, carbsGrams: 62, fatGrams: 10, prepTimeMins: 8, budgetTier: '$' },
-      { id: 'm2', title: 'Flame-Grilled Chicken Bowl & Quinoa', mealType: 'Lunch', calories: 680, proteinGrams: 58, carbsGrams: 65, fatGrams: 16, prepTimeMins: 15, budgetTier: '$$' },
-      { id: 'm3', title: 'Seared Wild Salmon & Sweet Potato Mash', mealType: 'Dinner', calories: 740, proteinGrams: 52, carbsGrams: 55, fatGrams: 28, prepTimeMins: 20, budgetTier: '$$$' },
-      { id: 'm4', title: 'Greek Yogurt & Honey Nut Crunch', mealType: 'Snack', calories: 310, proteinGrams: 30, carbsGrams: 28, fatGrams: 8, prepTimeMins: 3, budgetTier: '$' }
-    ]
-  });
+// Seed data schedules
+apiRouter.get('/schedule', authenticateToken, async (req: any, res) => {
+  const userId = req.user.id;
+  try {
+    if (userId === 901 || userId === 999) {
+      return res.json({
+        success: true,
+        data: [
+          { day: 'Mon', title: 'Hypertrophy Push A', muscle: 'Chest & Shoulders', stressLevel: 'amber', isCompleted: true },
+          { day: 'Tue', title: 'Power Pull & Biceps', muscle: 'Back & Biceps', stressLevel: 'emerald', isCompleted: true },
+          { day: 'Wed', title: 'Legs & Core Overload', muscle: 'Quads & Calves', stressLevel: 'rose', isCompleted: false, warning: 'High Hamstring Overuse Risk' },
+          { day: 'Thu', title: 'Active Recovery & Mobility', muscle: 'Full Body Flexibility', stressLevel: 'emerald', isCompleted: false },
+          { day: 'Fri', title: 'Upper Body Pump B', muscle: 'Chest, Arms & Back', stressLevel: 'amber', isCompleted: false },
+          { day: 'Sat', title: 'Posterior Chain Explosive', muscle: 'Hamstrings & Glutes', stressLevel: 'amber', isCompleted: false },
+          { day: 'Sun', title: 'Rest & Neural Reset', muscle: 'Recovery', stressLevel: 'emerald', isCompleted: false },
+        ]
+      });
+    }
+    const history = await getWorkoutHistory(userId);
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const completedDays = new Set(history.map((h: any) => days[new Date(h.completed_at).getDay()]));
+    const schedule = [
+      { day: 'Mon', title: 'Push Day', muscle: 'Chest & Shoulders', stressLevel: 'amber', isCompleted: completedDays.has('Mon') },
+      { day: 'Tue', title: 'Pull Day', muscle: 'Back & Biceps', stressLevel: 'emerald', isCompleted: completedDays.has('Tue') },
+      { day: 'Wed', title: 'Leg Day', muscle: 'Quads & Hamstrings', stressLevel: 'rose', isCompleted: completedDays.has('Wed') },
+      { day: 'Thu', title: 'Active Recovery', muscle: 'Mobility & Core', stressLevel: 'emerald', isCompleted: completedDays.has('Thu') },
+      { day: 'Fri', title: 'Upper Body', muscle: 'Chest, Arms & Back', stressLevel: 'amber', isCompleted: completedDays.has('Fri') },
+      { day: 'Sat', title: 'Posterior Chain', muscle: 'Hamstrings & Glutes', stressLevel: 'amber', isCompleted: completedDays.has('Sat') },
+      { day: 'Sun', title: 'Rest & Reset', muscle: 'Recovery', stressLevel: 'emerald', isCompleted: false },
+    ];
+    res.json({ success: true, data: schedule });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 app.use('/api/v1', apiRouter);
 
-httpServer.listen(port, () => {
-  console.log(`Backend server listening at http://localhost:${port}`);
+dbInit().then(() => {
+  httpServer.listen(port, () => {
+    console.log(`Backend server listening at http://localhost:${port}`);
+  });
 });
