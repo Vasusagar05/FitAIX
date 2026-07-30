@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependency directories
 node_modules/
 **/node_modules/
@@ -9,17 +10,56 @@ build/
 **/build/
 
 # Local env files
+=======
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js build output
+.next/
+out/
+build/
+
+# Production bundle
+dist/
+
+# Environment files
+>>>>>>> 84a8f4ce7e28ef04084ea3663730f168d3b02908
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
+<<<<<<< HEAD
 # Logs
+=======
+# Debug logs
+>>>>>>> 84a8f4ce7e28ef04084ea3663730f168d3b02908
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
 # System Files
 .DS_Store
 Thumbs.db
+=======
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Misc
+.vercel
+>>>>>>> 84a8f4ce7e28ef04084ea3663730f168d3b02908
